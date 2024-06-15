@@ -10,3 +10,4 @@ def battaglia(pg : Personaggio, nemico: Personaggio):
     for n, azione in enumerate(pg.spells, 2):
         azioni.append((n, azione))
         print(f'[{n}] {azione}')
+    scelta = input()
