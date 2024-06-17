@@ -7,7 +7,7 @@ def battaglia(pg : Personaggio, nemico: Personaggio):
     print('Cosa vuoi fare?')
     azioni = [(1, 'attacca')]
     print('[1] Attacca')
-    for n, azione in enumerate(pg.spells, 2):
+    for n, azione in enumerate(pg.spells, start=2):
         azioni.append((n, azione))
         print(f'[{n}] {azione}')
     scelta = input()

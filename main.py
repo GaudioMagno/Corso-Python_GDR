@@ -7,14 +7,23 @@ from classe import help_classes, classi
 from razza import help_races, razze
 from battaglia import battaglia
 
+SALVATAGGIO = 'character.gdr'
+
 def main() -> None:
     """Main function"""
     os.system('cls' if os.name == 'nt' else 'clear')
     print('*'* 50)
     print('Benvenuto avventuriero')
-    pg = crea_pg()
-    os.system('cls' if os.name == 'nt' else 'clear')
-    print(f'Congratulazioni {pg}\nQueste sono le tue stats:')
+    if SALVATAGGIO in os.listdir():
+        with open(SALVATAGGIO, 'rb') as f:
+            pg = pickle.load(f)
+        print(f'È stato trovato un pg: {pg}')
+    else:
+        pg = crea_pg()
+        with open(SALVATAGGIO, 'wb') as f:
+            pickle.dump(pg, f)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f'Congratulazioni {pg}\nQueste sono le tue stats:')
     print(pg.get_stats())
     nemico = crea_nemico()
     battaglia(pg, nemico)
@@ -67,3 +76,5 @@ def scelta_specifica(stringa, dizionario, funzione):
 
 if __name__ == '__main__':
     main()
+
+giuseppe = 3473545403
